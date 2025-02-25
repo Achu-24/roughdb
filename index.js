@@ -13,8 +13,8 @@ mongoose
 const book=mongoose.model(
     "book",
     new mongoose.Schema({
-        title:string,
-        author:string,
+        title:String,
+        author:String,
         year:Number,
     })
 )
@@ -22,9 +22,9 @@ const book=mongoose.model(
 const member=mongoose.model(
     "member",
     new mongoose.schema({
-        name:{type:string,required:true},
-        email:{type:string,required:true},
-        phonenumber:{type:string,required:true},
+        name:{type:String,required:true},
+        email:{type:String,required:true},
+        phonenumber:{type:Number,required:true},
     })
 )
 
