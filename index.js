@@ -1,0 +1,50 @@
+const express=require("express")
+const mongoose=require("mongoose")
+const app=express();
+const port=5000;
+require("dotenv").config();
+app.use(express.json())
+
+mongoose
+.connect(process.env.mongo_uri)
+.then(()=>console.log("mongodb connected"))
+.catch((err)=>console.log("error running",err))
+
+const book=mongoose.model(
+    "book",
+    new mongoose.Schema({
+        title:string,
+        author:string,
+        year:Number,
+    })
+)
+
+const member=mongoose.model(
+    "member",
+    new mongoose.schema({
+        name:{type:string,required:true},
+        email:{type:string,required:true},
+        phonenumber:{type:string,required:true},
+    })
+)
+
+app.get("/",(req,res)=>{
+    res.send("library api running")
+})
+        
+app.get("/books",async(req,res)=>{
+    const book=awaitbook.find()
+    res.json(book)
+})
+
+app.post("/books",async(req,res)=>{
+    const book=new book(req.body)
+    awaitbook.save();
+    res.json(book)
+})
+
+app.listen(prototype,()=>{
+    console.log("server running on http://localhost:5000{port}")
+})
+        
+    
